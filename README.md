@@ -16,7 +16,7 @@ You should now see your collections and documents.
 
 ### Reading and filtering docs
 
-Documents are displayed unfiltered on initial load. Hover over the table header and enter one or several filters, then click search or press enter to filter. Reset the filters with the close button.
+Documents are displayed unfiltered on initial load. Hover over the table header and enter one or several filters, then click search or press enter to filter. Reset the filters with the close button or esc key.
 
 **Pagination**
 
@@ -26,8 +26,16 @@ You can set the pagination in env in /js/typesense-api.js. Max 250.
 
 ### Writing new docs
 
-Hover over the table header and enter one or several entries, then click upload. Reset the entries with the close button.
+Hover over the table header and enter one or several entries, then click upload. Reset the entries with the close button or esc key.
+
+### Updating fields of a doc
+
+Click the entry in the cell, make the change, then click somewhere else or press enter to commit the change.
 
 ### Deleting docs
 
 Hover over the first column to get the delete button displayed for the row. Click it to get the confirmation button displayed. Click the confirmation button to irreversibly delete the doc from the collection.
+
+### Scroll
+
+When the contents of a cell overflow, you can scroll the cell left and right and the viewer will continuously scroll the content left in order to be able to read the full text.

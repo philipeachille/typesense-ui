@@ -12,12 +12,11 @@
   --colorBackground: 20, 26, 50;
   --colorBodyText: 210, 210, 215;
   /* --colorBodyText: 128, 156, 245; */
-  /* --colorNumber: 246, 211, 101; */
   --colorNumber: 62, 100, 255;
   --colorBlack: 0, 0, 0;
-  /* --colorBlue: 246, 211, 101; */
   --colorBlue: 62, 100, 255;
-  --colorGreen: 177, 232, 178;
+  --colorGreen: 246, 211, 101;
+  /* --colorGreen: 177, 232, 178; */
   --colorRed: crimson;
 }
 
@@ -204,7 +203,7 @@ height: 1.5rem
 
 .btn__upload, .btn__confirm {
   margin-left: var(--distanceBase);
-  background-color: rgba(var(--colorGreen), 0.67);
+  background-color: rgba(var(--colorGreen), 0.84);
 }
 
 .btn__up, .btn__down {

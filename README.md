@@ -39,3 +39,7 @@ Hover over the first column to get the delete button displayed for the row. Clic
 ### Scroll
 
 When the contents of a cell overflow, you can scroll the cell left and right and the viewer will continuously scroll the content left in order to be able to read the full text.
+
+### Dark and Light Mode
+
+The UI defaults to dark mode. To change to light mode, load style-light.css in typesense-ui.html

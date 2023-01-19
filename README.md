@@ -4,15 +4,27 @@ A user interface for the Typesense Server, run in the browser
 
 <img width="803" alt="Screenshot 2023-01-19 at 12 28 00" src="https://user-images.githubusercontent.com/20671922/213431167-5e71148e-90a8-4e79-8db5-6764e8002701.png">
 
-## Running the interface
+## Running the interface with demo data
+
+a) clone or download this repo
+
+b) open typesense-ui.html
+
+You should now see three collections and some demo documents.
+
+## Running the interface with your own data
 
 a) add "enable-cors = true" to your Typesense Server in /etc/typesense/typesense-server.ini
 
-b) add your Typesense Server API key and your Typesense Nodes to to env in /js/typesense-api.js
+b) clone or download this repo
 
-c) open typesense-ui.html
+c) add your Typesense Server API key and your Typesense Nodes to env in /js/typesense-api.js
 
-You should now see your collections and documents.
+d) set "USE_DEMO" in env to false or remove anything demo-related entirely
+
+e) open typesense-ui.html
+
+You should now see your collections and your documents.
 
 ## CRUD
 
@@ -37,6 +49,8 @@ Click the entry in the cell, make the change, then click somewhere else or press
 ### Deleting docs
 
 Hover over the first column to get the delete button displayed for the row. Click it to get the confirmation button displayed. Click the confirmation button to irreversibly delete the doc from the collection.
+
+## Other Functionality
 
 ### Scroll
 

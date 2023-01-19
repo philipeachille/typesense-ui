@@ -1,9 +1,10 @@
 const TypesenseAPI = ( () => {
 
   /**
-   * a) add "enable-cors = true" to your server in /etc/typesense/typesense-server.ini
-   * b) set your env below
-   *
+   * To run the UI with your own data:
+   *  a) add "enable-cors = true" to your server in /etc/typesense/typesense-server.ini
+   *  b) set your env below
+   *  c) set "USE_DEMO" in env to false or remove anything demo-related entirely
    */
 
   const env = {
@@ -14,13 +15,62 @@ const TypesenseAPI = ( () => {
       protocol: 'http',
     }],
     PAGE_LENGTH: 20,
+    USE_DEMO: true,
   };
 
-  const client = new Typesense.Client( {
+
+const client = !env.USE_DEMO
+  ? new Typesense.Client( {
     nodes: env.TS_NODES,
     apiKey: env.TS_SERVER_KEY,
     connectionTimeoutSeconds: 2,
-  } );
+  } )
+  : { /* MOCKS A DEMO */
+    demoDocuments: {
+      cars: [{ document: { id: 1, manufacturer: 'BMW' } }, { document: { id: 2, manufacturer: 'Audi' } }, { document: { id: 78, manufacturer: 'Volkswagen', wheels: 'need service' } }],
+      cakes: [{ document: { id: 1, flavor: 'chocolate', topping: 'vanilla ice cream' } }, { document: { id: 2, flavor: 'strawberry', topping: 'no topping' } }],
+      users: [],
+    },
+    collections: ( collName ) => ( {
+      retrieve: () =>
+
+        /* mock returned collections */
+        [
+          { name: 'cars', num_documents: 3, fields: [{ name: 'manufacturer' }, { name: 'color' }, { name: 'speed' }, { name: 'wheels' }] },
+          { name: 'cakes', num_documents: 2, fields: [{ name: 'flavor' }, { name: 'topping' }] },
+          { name: 'users', num_documents: 0, fields: [{ name: 'First Name' }, { name: 'Last Name' }, { name: 'Full Address' }] },
+        ],
+      documents: () => ( {
+        search: async ( queryData ) =>
+
+          /* mock returned queries */
+          queryData.collName == 'cars' && { found: client.demoDocuments.cars.length, page: 1, hits: client.demoDocuments.cars }
+          || queryData.collName == 'cakes' && { found: client.demoDocuments.cakes.length, page: 1, hits: client.demoDocuments.cakes }
+          || queryData.collName == 'users' && { found: client.demoDocuments.users.length, page: 1, hits: client.demoDocuments.users },
+        create: async ( data ) => {
+
+          /* mock document creation */
+          client.demoDocuments[collName].push( { document: Object.assign( data, { id: client.demoDocuments[collName].length + 1 } ) } );
+          return {
+            httpStatus: null,
+          };
+        },
+        delete: async ( queryData ) =>
+
+          /* mock document deletion */
+          ( {
+            httpStatus: null,
+          } ),
+        update: async ( queryData ) =>
+
+          /* mock document update */
+          ( {
+            httpStatus: null,
+          } )
+        ,
+      } ),
+    } ),
+  };
 
   async function getColls() {
     return client.collections().retrieve();

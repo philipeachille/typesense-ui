@@ -2,6 +2,8 @@
 
 A user interface for the Typesense Server, run in the browser
 
+<img width="803" alt="Screenshot 2023-01-19 at 12 28 00" src="https://user-images.githubusercontent.com/20671922/213431167-5e71148e-90a8-4e79-8db5-6764e8002701.png">
+
 ## Running the interface
 
 a) add "enable-cors = true" to your Typesense Server in /etc/typesense/typesense-server.ini

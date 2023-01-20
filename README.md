@@ -10,7 +10,7 @@ a) clone or download this repo
 
 b) open typesense-ui.html
 
-You should now see three collections and some demo documents.
+You should now see three collections and some demo documents. Note that the demo does not present all features and may introduce bugs that don't occur when connecting your own instance. So it's recommended to connect to your own server.
 
 ## Running the interface with your own data
 
